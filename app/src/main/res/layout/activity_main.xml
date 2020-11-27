@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/l1"
+        android:layout_marginTop="25dp"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/textPeso"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="65dp"
+            android:layout_marginTop="7dp"
+            android:text="Peso:" />
+
+
+        <EditText
+            android:id="@+id/valorPeso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="7"
+            android:layout_marginLeft="25dp"
+            android:inputType="numberDecimal|numberSigned" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/l2"
+        android:layout_below="@+id/l1"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/textSexo"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="11dp"
+            android:layout_marginTop="7dp"
+            android:text="Sexo      (m/f):" />
+
+
+        <EditText
+            android:id="@+id/valorSexo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="7"
+            android:layout_marginLeft="25dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/l3"
+        android:layout_below="@+id/l2"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/textCopos"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="37dp"
+            android:layout_marginTop="7dp"
+            android:text="N° Copos:" />
+
+
+        <EditText
+            android:id="@+id/valorCopos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="7"
+            android:layout_marginLeft="25dp"
+            android:inputType="number" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/l4"
+        android:layout_below="@+id/l3"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/textJejum"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="Está de jejum?      (s/n):" />
+
+
+        <EditText
+            android:id="@+id/valorJejum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="7"
+            android:layout_marginLeft="25dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/l4"
+        android:layout_marginTop="50dp"
+        android:text="Enviar Dados"
+        android:textStyle="normal"
+        android:textAllCaps="false"
+        android:onClick="sendData"/>
+
+</RelativeLayout>
