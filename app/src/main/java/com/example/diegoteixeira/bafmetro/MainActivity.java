@@ -59,14 +59,16 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(valida) {
-            Intent it = new Intent(this, Calculo.class);
+            //Intent it = new Intent(this, Calculo.class);
+            Intent it = new Intent("Calc");
+            it.addCategory("Calc1");
 
             it.putExtra("peso", Peso);
             it.putExtra("sexo", sexo);
             it.putExtra("nCopos", Copos);
             it.putExtra("isJejum", isJejum);
 
-            startActivityForResult(it, 1);
+            startActivityForResult(it, 10);
         }
     }
 
@@ -75,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(codigoRequisicao, codigoResultado, it);
 
         if(it != null) {
-           if(codigoRequisicao == 1) {
+           if(codigoRequisicao == 10) {
                double taxa = it.getDoubleExtra("taxaAlcoolemia",0);
                String classificaco = it.getStringExtra("classificacao");
 

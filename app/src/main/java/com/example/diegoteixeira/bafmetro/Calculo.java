@@ -16,23 +16,27 @@ public class Calculo extends AppCompatActivity {
     }
 
     public void calcular(View view) {
-        Intent it = getIntent();
+        try {
+            Intent it = getIntent();
 
-        double peso = it.getDoubleExtra("peso",1);
-        int nCopos = it.getIntExtra("nCopos",0);
-        String sexo = it.getStringExtra("sexo");
-        String isJejum = it.getStringExtra("isJejum");
+            double peso = it.getDoubleExtra("peso", 1);
+            int nCopos = it.getIntExtra("nCopos", 0);
+            String sexo = it.getStringExtra("sexo");
+            String isJejum = it.getStringExtra("isJejum");
 
-        double taxaAlcoolemia = (nCopos * 4.8) / (peso * coeficiente(sexo, isJejum));
-        String classificacao = classificacao(taxaAlcoolemia);
+            double taxaAlcoolemia = (nCopos * 4.8) / (peso * coeficiente(sexo, isJejum));
+            String classificacao = classificacao(taxaAlcoolemia);
 
-        Intent it2 = new Intent(this, MainActivity.class);
+            Intent it2 = new Intent(this, MainActivity.class);
 
-        it2.putExtra("taxaAlcoolemia", taxaAlcoolemia);
-        it2.putExtra("classificacao", classificacao);
+            it2.putExtra("taxaAlcoolemia", taxaAlcoolemia);
+            it2.putExtra("classificacao", classificacao);
 
-        setResult(10, it2);
-        finish();
+            setResult(10, it2);
+            finish();
+        } catch (Exception e) {
+            Toast.makeText(this, "Para um perfeito funcionamento desse app, envie os dados primeiro através do outro app" , Toast.LENGTH_LONG).show();
+        }
     }
 
     private double coeficiente(String sexo, String isJejum) {
