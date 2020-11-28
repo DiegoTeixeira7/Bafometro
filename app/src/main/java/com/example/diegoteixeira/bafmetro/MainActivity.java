@@ -25,14 +25,17 @@ public class MainActivity extends AppCompatActivity {
         String nCopos = ((EditText)findViewById(R.id.valorCopos)).getText().toString();
         String isJejum = ((EditText)findViewById(R.id.valorJejum)).getText().toString();
 
+        double Peso = 1.0;
+        int Copos = 0;
+
         boolean valida = true;
 
         if(peso.equals("") || sexo.equals("") || nCopos.equals("") || isJejum.equals("")) {
             valida = false;
             Toast.makeText(getBaseContext(),"Preencha todos os campos",Toast.LENGTH_SHORT).show();
         } else {
-            double Peso = parseDouble(peso);
-            int Copos = parseInt(nCopos);
+            Peso = parseDouble(peso);
+            Copos = parseInt(nCopos);
 
             if(Peso < 20 || Peso > 400) {
                 valida = false;
@@ -56,14 +59,29 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(valida) {
-            Intent it = new Intent(getBaseContext(), Calculo.class);
+            Intent it = new Intent(this, Calculo.class);
 
-            it.putExtra("peso", peso);
+            it.putExtra("peso", Peso);
             it.putExtra("sexo", sexo);
-            it.putExtra("nCopos", nCopos);
+            it.putExtra("nCopos", Copos);
             it.putExtra("isJejum", isJejum);
 
-            startActivity(it);
+            startActivityForResult(it, 1);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int codigoRequisicao, int codigoResultado, Intent it) {
+        super.onActivityResult(codigoRequisicao, codigoResultado, it);
+
+        if(it != null) {
+           if(codigoRequisicao == 1) {
+               double taxa = it.getDoubleExtra("taxaAlcoolemia",0);
+               String classificaco = it.getStringExtra("classificacao");
+
+               Toast.makeText(getBaseContext(),"Taxa de Alcooemia: " + taxa + "\nClassificação: " + classificaco,
+                       Toast.LENGTH_SHORT).show();
+           }
         }
     }
 }
